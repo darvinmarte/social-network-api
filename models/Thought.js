@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 
 const thoughtTextSchema = new mongoose.Schema({
-    Thought:{ 
+    Thought: { 
         type: string,
         min: 1,
         max: 128,
@@ -11,4 +11,16 @@ const thoughtTextSchema = new mongoose.Schema({
         }
 });
 
-const user = mongoose.model('User', userSchema);
+const createdAt = new mongoose.Schema({
+    timestamps: {
+        type: Date,
+        createdAt: 'created_at', // Use `created_at` to store the created date
+      }
+
+});
+
+
+
+const thoughtText = mongoose.model('thoughtText', thoughtTextSchema);
+
+module.exports = thoughtText

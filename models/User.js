@@ -37,3 +37,4 @@ const Email = mongoose.model('Email', emailSchema);
 const Thoughts = mongoose.model('Thoughts', thoughtsSchema);
 const Friend = mongoose.model('Friends', friendsSchema);
 
+module.exports = User, Email, Thoughts, Friend
