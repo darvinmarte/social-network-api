@@ -3,10 +3,12 @@ const mongoose = require('mongoose');
 
 
 const UsernameSchema = new mongoose.Schema({
-    username: String,
+    username:{ 
+    type: string,
     unique: true,
     trim: true,
-    required: 'Username is required',
+    required: true,
+    }
 });
 
 const emailSchema = new mongoose.Schema({
@@ -14,7 +16,7 @@ const emailSchema = new mongoose.Schema({
         type: String,
         trim: true,
         unique: true,
-        required: 'Email address is required',
+        required: true,
         validate: [validateEmail, 'Please fill a valid email address'],
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
     }
@@ -30,8 +32,8 @@ const friendsSchema = new mongoose.Schema({
 
 
 // Using mongoose.model() to compile a model based on the schema
-const user = mongoose.model('User', userSchema);
-const email = mongoose.model('Email', emailSchema);
-const thoughts = mongoose.model('Thoughts', thoughtsSchema);
-const friend = mongoose.model('Friends', friendsSchema);
+const User = mongoose.model('User', userSchema);
+const Email = mongoose.model('Email', emailSchema);
+const Thoughts = mongoose.model('Thoughts', thoughtsSchema);
+const Friend = mongoose.model('Friends', friendsSchema);
 
