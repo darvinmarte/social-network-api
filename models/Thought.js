@@ -12,7 +12,11 @@ const ThoughtTextSchema = new mongoose.Schema({
     timestamps: {
         type: Date,
         default: Date.now()
-    }
+    },
+    userName: {
+    type: mongoose.Schema.Types.ObjectId, ref: 'Thoughts',
+    },
+    reaction: [Reaction]
 });
 
 
