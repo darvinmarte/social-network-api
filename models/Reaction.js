@@ -10,12 +10,12 @@ const Reaction = new mongoose.Schema({
         default: new ObjectId
     },
     reactionBody:{
-        type: string,
+        type: String,
         required: true,
         max: 280
     },
     userName: {
-        type: string,
+        type: String,
         required: true
     },
     timestamps: {

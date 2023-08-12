@@ -5,17 +5,18 @@ const dayjs = require('dayjs')
 
 const ThoughtSchema = new mongoose.Schema({
     Thought: {
-        type: string,
+        type: String,
         min: 1,
         max: 128,
         required: true,
     },
     timestamps: {
         type: Date,
-        default: Date.now()
+        default: Date.now(),
+        get: time => dayjs().format('DD/MM/YYYY')
     },
     userName: {
-    type: string
+    type: String
     },
     reaction: [Reaction]
 });
