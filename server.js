@@ -1,18 +1,18 @@
 const express = require('express');
-const { MongoClient } = require('mongodb');
+const db = require('./config/connection');
+const routes = require('./routes');
 
 
+const PORT = process.env.PORT || 3001;
 const app = express();
-const port = 3001;
 
-const connectionStringURI = `mongodb://127.0.0.1:27017`;
 
-const client = new MongoClient(connectionStringURI);
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(routes);
 
-let db;
-
-const dbName = '';
-
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
+db.once('open', () => {
+  app.listen(PORT, () => {
+    console.log(`API server for ${activity} running on port ${PORT}!`);
+  });
 });

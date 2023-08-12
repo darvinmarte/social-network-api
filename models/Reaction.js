@@ -2,6 +2,7 @@
 // This will not be a model, but rather will be used as the reaction field's subdocument schema in the Thought model.
 
 const mongoose = require('mongoose');
+const dayjs = require('dayjs')
 
 const Reaction = new mongoose.Schema({
     reactionId: {
@@ -19,8 +20,11 @@ const Reaction = new mongoose.Schema({
     },
     timestamps: {
         type: Date,
-        default: Date.now()
+        default: Date.now(),
+        get: time => dayjs().format('DD/MM/YYYY')
     },
     // Use a getter method to format the timestamp on query
+
 })
 
+module.exports = Reaction

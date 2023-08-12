@@ -1,8 +1,9 @@
 // Define Mongoose
 const mongoose = require('mongoose');
+const Reaction = require('./Reaction')
+const dayjs = require('dayjs')
 
-
-const ThoughtTextSchema = new mongoose.Schema({
+const ThoughtSchema = new mongoose.Schema({
     Thought: {
         type: string,
         min: 1,
@@ -14,13 +15,14 @@ const ThoughtTextSchema = new mongoose.Schema({
         default: Date.now()
     },
     userName: {
-    type: mongoose.Schema.Types.ObjectId, ref: 'Thoughts',
+    type: string
     },
     reaction: [Reaction]
 });
 
 
-const thoughtText = mongoose.model('ThoughtText', ThoughtTextSchema);
+const Thought = mongoose.model('Thought', ThoughtSchema);
 
 
-module.exports = thoughtText
+module.exports = Thought
+
