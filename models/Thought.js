@@ -10,7 +10,7 @@ const ThoughtSchema = new mongoose.Schema({
         max: 128,
         required: true,
     },
-    timestamps: {
+    timestamp: {
         type: Date,
         default: Date.now(),
         get: time => dayjs().format('DD/MM/YYYY')
