@@ -13,7 +13,7 @@
 ## Description
 
 - An application for a social media startup that need an API for social networks that uses a NoSQL database so that their website can handle large amounts of unstructured data.
-g
+
 ## Installation
 
 - Latest versions of NODE JS, NPM, Express, NoSQL, Mongoose.
