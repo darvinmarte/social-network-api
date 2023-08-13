@@ -4,7 +4,7 @@ const Reaction = require('./Reaction')
 const dayjs = require('dayjs')
 
 const ThoughtSchema = new mongoose.Schema({
-    Thought: {
+    thought: {
         type: String,
         min: 1,
         max: 128,
@@ -15,7 +15,7 @@ const ThoughtSchema = new mongoose.Schema({
         default: Date.now(),
         get: time => dayjs().format('DD/MM/YYYY')
     },
-    userName: {
+    username: {
     type: String
     },
     reaction: [Reaction]

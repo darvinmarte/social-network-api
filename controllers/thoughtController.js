@@ -70,7 +70,7 @@ module.exports = {
             }
 
             const user = await User.findOneAndUpdate(
-                { thoughts: req.params.thoughtId },
+                { _id: user._id }, 
                 { $pull: { thoughts: req.params.thoughtId } },
                 { new: true }
             );
