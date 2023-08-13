@@ -7,7 +7,6 @@ const dayjs = require('dayjs')
 const Reaction = new mongoose.Schema({
     reactionId: {
         type: mongoose.Schema.Types.ObjectId,
-        default: new ObjectId
     },
     reactionBody:{
         type: String,
