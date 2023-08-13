@@ -70,7 +70,7 @@ module.exports = {
             }
 
             const user = await User.findOneAndUpdate(
-                { _id: user._id }, 
+                { _id: user._id },
                 { $pull: { thoughts: req.params.thoughtId } },
                 { new: true }
             );
@@ -82,6 +82,40 @@ module.exports = {
             }
 
             res.json({ message: 'Thought successfully deleted!' });
+        } catch (err) {
+            res.status(500).json(err);
+        }
+    },
+    async addReaction(req, res) {
+        try {
+            const thought = await Thought.findOneAndUpdate(
+                { _id: req.params.thoughtId },
+                { $addToSet: { reactions: req.body } },
+                { runValidators: true, new: true }
+            );
+
+            if (!thought) {
+                return res.status(404).json({ message: 'No thought found with this id!' });
+            }
+
+            res.json(thought);
+        } catch (err) {
+            res.status(500).json(err);
+        }
+    },
+    async removeReaction(req, res) {
+        try {
+            const thought = await Thought.findOneAndUpdate(
+                { _id: req.params.thoughtId },
+                { $pull: { reactions: { reactionId: req.params.reactionId } } },
+                { runValidators: true, new: true }
+            );
+
+            if (!thought) {
+                return res.status(404).json({ message: 'No thought with this id!' });
+            }
+
+            res.json(thought);
         } catch (err) {
             res.status(500).json(err);
         }
