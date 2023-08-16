@@ -93,7 +93,6 @@ module.exports = {
                 { $addToSet: { reaction: req.body } },
                 { runValidators: true, new: true }
             );
-                console.log(thought)
             if (!thought) {
                 return res.status(404).json({ message: 'No thought found with this id!' });
             }
@@ -107,7 +106,7 @@ module.exports = {
         try {
             const thought = await Thought.findOneAndUpdate(
                 { _id: req.params.thoughtId },
-                { $pull: { reactions: { reactionId: req.params.reactionId } } },
+                { $pull: { reaction: { reactionId: req.params.reactionId } } },
                 { runValidators: true, new: true }
             );
 
